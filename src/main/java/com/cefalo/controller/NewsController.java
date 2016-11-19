@@ -30,8 +30,6 @@ public class NewsController {
     public String addNews(@ModelAttribute("news") @Valid News news, BindingResult bindingResult,
                           Model model) {
         try {
-            System.out.println(news.getPublishDate());
-            bindingResult.getFieldErrors().stream().forEach(e -> System.out.println(e.getField()+' '+e.getDefaultMessage()));
             if (bindingResult.hasErrors()) {
                 throw new RuntimeException("Form has errors");
             }
@@ -49,7 +47,6 @@ public class NewsController {
     @GetMapping("addStory")
     public String getAddStory(@ModelAttribute("news") News news, Model model) {
         model.addAttribute("index", 2);
-        System.out.println(news.getPublishDate());
         return "news/add_story";
     }
 

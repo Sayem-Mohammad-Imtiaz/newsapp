@@ -51,7 +51,9 @@
                 <div class="col-sm-8">
 
                     <div class='input-group date'>
-                        <input type="text" th:field="*{publishDate}" class="form-control" readonly="readonly"
+                        <input type="text" name="publishDate"
+                               th:value="${news.publishDate ne null}? ${#dates.format(news.publishDate,'dd-MM-yyyy')}:''"
+                               class="form-control" onkeydown="return false;" required="true"
                                th:disabled="${successMessage ne null}? 'true': null"/>
                         <span class="input-group-addon">
                             <span class="fa fa-calendar"></span>

@@ -11,8 +11,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 content">
-            [[${news.body}]]
+        <div class="col-sm-12">
+            <pre>[[${news.body}]]</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="pull-right"  style="font-style: italic;font-size:13px;" th:inline="text">
+                Published on: [[${#dates.format(news.publishDate, 'dd MMM, yyyy')}]]
+            </p>
         </div>
     </div>
 </th:block>

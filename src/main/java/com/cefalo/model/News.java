@@ -2,6 +2,7 @@ package com.cefalo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -31,14 +32,15 @@ public class News {
     private String author;
     @Size(max = 1000)
     private String body;
-    @NotEmpty
-    private String publishDate;
+    @NotNull
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date publishDate=new Date();
 
-    public String getPublishDate() {
+    public Date getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(String publishDate) {
+    public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
 
