@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Created by User on 11/19/2016.
  */
@@ -19,9 +20,8 @@ public class NewsServiceTest extends NewsAppTests {
     private NewsService newsService;
 
     @Test
-    public void test01_addNews()
-    {
-        News news=new News();
+    public void test01_addNews() {
+        News news = new News();
         news.setTitle("Test article 1");
         news.setAuthor("Test author 1");
         news.setBody("Test body 1");
@@ -30,10 +30,17 @@ public class NewsServiceTest extends NewsAppTests {
     }
 
     @Test
-    public void test02_listAllNews()
-    {
-        List<News> newsList=newsService.listNews();
+    public void test02_listAllNews() {
+        List<News> newsList = newsService.listNews();
         assertThat(newsList).isNotEmpty();
+    }
+
+    @Test
+    public void test03_getNewsById() {
+        List<News> newsList = newsService.listNews();
+        assertThat(newsList).isNotEmpty();
+        News news = newsService.getNewsById(newsList.get(0).getId());
+        assertThat(news).isNotNull();
     }
 
 }

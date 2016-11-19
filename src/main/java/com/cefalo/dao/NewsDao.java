@@ -11,4 +11,6 @@ public interface NewsDao {
     boolean addNews(News news);
 
     List<News> listNews();
+
+    News getNewsById(Integer id);
 }

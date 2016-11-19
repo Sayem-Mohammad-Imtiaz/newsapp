@@ -29,15 +29,25 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public List<News> listNews() {
-        return jdbcTemplate.query("SELECT * FROM news", new RowMapper<News>() {
-            public News mapRow(ResultSet rs, int arg1) throws SQLException {
-                News news = new News();
-                news.setId(rs.getInt("id"));
-                news.setTitle(rs.getString("title"));
-                news.setAuthor(rs.getString("author"));
-                news.setBody(rs.getString("body"));
-                return news;
-            }
-        });
+        return jdbcTemplate.query("SELECT * FROM news", new NewsRowMapper());
     }
+
+    @Override
+    public News getNewsById(Integer id) {
+        return jdbcTemplate.queryForObject("SELECT * FROM news where id=" + id, new NewsRowMapper());
+    }
+
+    class NewsRowMapper implements RowMapper<News> {
+        @Override
+        public News mapRow(ResultSet rs, int i) throws SQLException {
+            News news = new News();
+            news.setId(rs.getInt("id"));
+            news.setTitle(rs.getString("title"));
+            news.setAuthor(rs.getString("author"));
+            news.setBody(rs.getString("body"));
+            return news;
+        }
+    }
+
+
 }
