@@ -1,11 +1,17 @@
 # README #
 
-##Technology stack application using ##
+##Technology and Frameworks being used in this project ##
 1. Spring Boot has the charge of managing server side code
 2. In memory SQL database HSQLDB has been used for repository purpose. Data will not be persisted. So
 you will lost data every time you restart servlet conatiner.
-3. Template engine Thyemleaf used for HTML rendering
-4. For UI design, Bootstrap and Font-awesome has been used
+3. Maven used as build and dependency management tool
+4. Template engine Thyemleaf used for HTML rendering
+5. For UI design, Bootstrap and Font-awesome has been used
+
+## Please try not to use in lower version of following software's as I haven't tested this application on lower version of them ##
+1. Apache Maven(Version: 3.3.9)
+2. Apache Tomcat (Version: 8)
+3. JDK (Version: 1.8)
  
 ## Deploy application in a servlet container ##
 1. Clone newsapp project in your machine
