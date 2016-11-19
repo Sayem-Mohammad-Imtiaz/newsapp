@@ -5,6 +5,7 @@ import com.cefalo.model.News;
 import com.cefalo.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,12 +18,14 @@ public class NewsServiceImpl implements NewsService {
     private NewsDao newsDao;
 
     @Override
+    @Transactional
     public boolean addNews(News news) {
-        return false;
+        return newsDao.addNews(news);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<News> listNews() {
-        return null;
+        return newsDao.listNews();
     }
 }

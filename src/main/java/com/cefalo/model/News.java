@@ -4,9 +4,18 @@ package com.cefalo.model;
  * Created by sayem on 11/18/2016.
  */
 public class News {
+    private Integer id;
     private String title;
     private String author;
     private String body;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

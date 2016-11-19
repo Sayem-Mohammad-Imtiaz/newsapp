@@ -2,8 +2,13 @@ package com.cefalo.daoimpl;
 
 import com.cefalo.dao.NewsDao;
 import com.cefalo.model.News;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -11,13 +16,28 @@ import java.util.List;
  */
 @Repository
 public class NewsDaoImpl implements NewsDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     @Override
     public boolean addNews(News news) {
-        return false;
+        String sql = "INSERT INTO news(title, author, body) VALUES(?,?,?)";
+        int id = jdbcTemplate.update(sql, news.getTitle(), news.getAuthor(), news.getBody());
+        return (id != 0);
     }
 
     @Override
     public List<News> listNews() {
-        return null;
+        return jdbcTemplate.query("SELECT * FROM news", new RowMapper<News>() {
+            public News mapRow(ResultSet rs, int arg1) throws SQLException {
+                News news = new News();
+                news.setId(rs.getInt("id"));
+                news.setTitle(rs.getString("title"));
+                news.setAuthor(rs.getString("author"));
+                news.setBody(rs.getString("body"));
+                return news;
+            }
+        });
     }
 }
