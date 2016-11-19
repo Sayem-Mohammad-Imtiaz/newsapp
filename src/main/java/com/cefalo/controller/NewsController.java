@@ -31,10 +31,17 @@ public class NewsController {
     @PostMapping("addStory")
     public String addNews(@ModelAttribute("news") @Valid News news, BindingResult bindingResult,
                           Model model) {
-        if (bindingResult.hasErrors())
-            throw new RuntimeException("Form has errors");
-        newsService.addNews(news);
-
+        try {
+            if (bindingResult.hasErrors()) {
+                throw new RuntimeException("Form has errors");
+            }
+            if (!newsService.addNews(news))
+                throw new RuntimeException("Story creation failed. Please try again.");
+            model.addAttribute("successMessage", "Story created successfully");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            model.addAttribute("errorMessage", ex.getMessage());
+        }
         model.addAttribute("index", 2);
         return "news/add_story";
     }

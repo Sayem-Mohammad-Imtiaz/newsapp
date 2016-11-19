@@ -12,32 +12,54 @@
 
     <div id="page-wrapper">
 
-        <form class="form-horizontal" th:object="${news}" th:action="@{/addStory}" method="post">
+        <div th:if="${successMessage ne null}" class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h4 class="text-success well well-sm text-center" th:text="${successMessage}"></h4>
+            </div>
+        </div>
+        <div th:if="${errorMessage ne null}" class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h4 class="text-danger well well-sm text-center" th:text="${errorMessage}"></h4>
+            </div>
+        </div>
+
+        <form class="form-horizontal" th:object="${news}" th:action="@{/news/addStory}" method="post"
+                >
             <div class="form-group">
                 <label class="col-sm-2 control-label">Title</label>
+
                 <div class="col-sm-8">
                     <input type="text" th:field="*{title}" class="form-control" placeholder="Title"
-                            maxlength="100"/>
+                           maxlength="100" required="true"
+                           th:disabled="${successMessage ne null}? 'true': null"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Author</label>
+
                 <div class="col-sm-8">
                     <input type="text" th:field="*{author}" class="form-control" placeholder="Author"
-                            maxlength="100"/>
+                           maxlength="100" required="true"
+                           th:disabled="${successMessage ne null}? 'true': null"/>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Body</label>
+
                 <div class="col-sm-8">
                     <textarea th:field="*{body}" class="form-control" placeholder="Body" rows="8"
-                           maxlength="255"/>
+                              maxlength="255" th:disabled="${successMessage ne null}? 'true': null"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-8">
-                    <button type="submit" class="btn btn-primary btn-outline btn-flat pull-left"><i class="fa fa-plus"/> Add</button>
-                    <button class="btn btn-primary btn-outline btn-flat pull-right"><i class="fa fa-arrow-left"/> Back</button>
+                    <button type="submit" class="btn btn-primary btn-outline btn-flat pull-right"
+                            th:disabled="${successMessage ne null}? 'true': null"><i
+                            class="fa fa-plus"/>
+                        Add
+                    </button>
+                    <button class="btn btn-primary btn-outline btn-flat pull-left"><i class="fa fa-arrow-left"/> Back
+                    </button>
                 </div>
             </div>
         </form>
