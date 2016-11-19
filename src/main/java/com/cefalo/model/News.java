@@ -1,12 +1,21 @@
 package com.cefalo.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Max;
+
 /**
  * Created by sayem on 11/18/2016.
  */
 public class News {
     private Integer id;
+    @NotEmpty
+    @Max(100)
     private String title;
+    @NotEmpty
+    @Max(100)
     private String author;
+    @Max(255)
     private String body;
 
     public Integer getId() {
