@@ -1,6 +1,6 @@
 CREATE TABLE news (
-  title  VARCHAR(100) NOT NULL,
+  title  VARCHAR(255) NOT NULL,
   author VARCHAR(100) NOT NULL,
-  body   VARCHAR(255),
+  body   VARCHAR(1000),
   id     INTEGER IDENTITY PRIMARY KEY
 );

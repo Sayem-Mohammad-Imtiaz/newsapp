@@ -54,8 +54,12 @@ public class NewsController {
 
     @GetMapping
     public String getNews(Model model) {
-        newsService.listNews();
-
+        try {
+            model.addAttribute("newsList", newsService.listNews());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            model.addAttribute("errorMessage", "Server encountered an internal problem in reading news list");
+        }
         model.addAttribute("index", 1);
         return "news/home";
     }

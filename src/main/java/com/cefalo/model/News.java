@@ -10,12 +10,12 @@ import javax.validation.constraints.Size;
 public class News {
     private Integer id;
     @NotEmpty
-    @Size(max = 100)
+    @Size(max = 255)
     private String title;
     @NotEmpty
     @Size(max = 100)
     private String author;
-    @Size(max = 255)
+    @Size(max = 1000)
     private String body;
 
     public Integer getId() {

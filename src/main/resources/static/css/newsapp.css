@@ -44,12 +44,17 @@ body {
 .btn-primary.btn-outline {
     color: #428bca;
 }
-.btn-flat
-{
-{
-    border: 0;
+
+.btn-primary[disabled] {
+    background-color: transparent;
+}
+
+.btn-flat {
     background: none;
-    box-shadow:none;
+    box-shadow: none;
     border-radius: 0px;
 }
+
+.list-group-item {
+    padding: 5px 20px;
 }
