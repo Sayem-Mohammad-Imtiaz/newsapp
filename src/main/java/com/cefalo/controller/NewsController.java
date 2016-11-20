@@ -3,6 +3,7 @@ package com.cefalo.controller;
 import com.cefalo.model.News;
 import com.cefalo.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -83,4 +84,17 @@ public class NewsController {
         }
         return news;
     }
+
+    @ResponseBody
+    @GetMapping(value = "xml/{id}", produces = MediaType.APPLICATION_XML_VALUE)
+    public News loadNewsXmlView(@PathVariable Integer id, Model model) {
+        News news = null;
+        try {
+            news = newsService.getNewsById(id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return news;
+    }
+
 }
