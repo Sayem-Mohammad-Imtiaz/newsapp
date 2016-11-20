@@ -2,5 +2,6 @@ CREATE TABLE news (
   title  VARCHAR(255) NOT NULL,
   author VARCHAR(100) NOT NULL,
   body   VARCHAR(1000),
+  publish_date DATE NOT NULL,
   id     INTEGER IDENTITY PRIMARY KEY
 );

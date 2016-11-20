@@ -6,7 +6,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import util.CommonUtils;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,7 +27,7 @@ public class NewsServiceTest extends NewsAppTests {
         news.setTitle("Test article 1");
         news.setAuthor("Test author 1");
         news.setBody("Test body 1");
-
+        news.setPublishDate(CommonUtils.parseStringFromDate(new Date(), null));
         assertThat(newsService.addNews(news)).isTrue();
     }
 

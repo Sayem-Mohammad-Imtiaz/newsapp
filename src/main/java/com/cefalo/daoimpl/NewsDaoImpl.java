@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import util.CommonUtils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,8 +23,9 @@ public class NewsDaoImpl implements NewsDao {
 
     @Override
     public boolean addNews(News news) {
-        String sql = "INSERT INTO news(title, author, body) VALUES(?,?,?)";
-        int id = jdbcTemplate.update(sql, news.getTitle(), news.getAuthor(), news.getBody());
+        String sql = "INSERT INTO news(title, author, body, publish_date) VALUES(?,?,?,?)";
+        int id = jdbcTemplate.update(sql, news.getTitle(), news.getAuthor(), news.getBody(),
+                CommonUtils.parseDateFromString(news.getPublishDate(), null));
         return (id != 0);
     }
 
@@ -45,6 +47,7 @@ public class NewsDaoImpl implements NewsDao {
             news.setTitle(rs.getString("title"));
             news.setAuthor(rs.getString("author"));
             news.setBody(rs.getString("body"));
+            news.setPublishDate(CommonUtils.parseStringFromDate(rs.getDate("publish_date"), null));
             return news;
         }
     }

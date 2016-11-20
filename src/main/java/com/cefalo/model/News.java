@@ -3,8 +3,10 @@ package com.cefalo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.*;
+import java.util.Date;
 
 /**
  * Created by sayem on 11/18/2016.
@@ -14,6 +16,7 @@ import javax.xml.bind.annotation.*;
 @XmlType(propOrder = {
         "title",
         "author",
+        "publishDate",
         "body"
 })
 public class News {
@@ -28,6 +31,16 @@ public class News {
     private String author;
     @Size(max = 1000)
     private String body;
+    @NotEmpty
+    private String publishDate;
+
+    public String getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(String publishDate) {
+        this.publishDate = publishDate;
+    }
 
     public Integer getId() {
         return id;

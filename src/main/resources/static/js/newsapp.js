@@ -49,6 +49,12 @@ $(function () {
         }
 
     });
+
+    $('.date').datetimepicker({
+        format: 'DD-MM-YYYY',
+        maxDate: 'now',
+        ignoreReadonly: true
+    });
 });
 
 function formatXml(xml) {
