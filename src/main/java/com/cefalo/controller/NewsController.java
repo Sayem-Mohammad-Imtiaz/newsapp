@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -62,5 +59,28 @@ public class NewsController {
         }
         model.addAttribute("index", 1);
         return "news/home";
+    }
+
+    @GetMapping("html/{id}")
+    public String loadNewsHtmlView(@PathVariable Integer id, Model model) {
+        try {
+            model.addAttribute("news", newsService.getNewsById(id));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            model.addAttribute("errorMessage", "Server encountered an internal problem in reading news");
+        }
+        return "news/view_html :: htmlView";
+    }
+
+    @ResponseBody
+    @GetMapping("json/{id}")
+    public News loadNewsJsonView(@PathVariable Integer id, Model model) {
+        News news = null;
+        try {
+            news = newsService.getNewsById(id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return news;
     }
 }
