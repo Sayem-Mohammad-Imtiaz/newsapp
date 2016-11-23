@@ -3,7 +3,7 @@
 ##Technology and Frameworks being used in this project ##
 1. Spring Boot has the charge of managing server side code
 2. In memory SQL database HSQLDB has been used for repository purpose. Data will not be persisted. So
-you will lost data every time you restart servlet conatiner.
+you will lose data every time you restart servlet conatiner.
 3. Maven used as build and dependency management tool
 4. Template engine Thyemleaf used for HTML rendering
 5. For UI design, Bootstrap and Font-awesome has been used
