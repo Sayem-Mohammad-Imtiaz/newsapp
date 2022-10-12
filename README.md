@@ -3,13 +3,13 @@
 ## What this project is about ##
 This is an web application that allows user to publish articles and to download them in different format including HTML, JSON and XML format. I developed this web application as part of an assessment for a *Java Developer* position at [Cefalo](https://www.cefalo.com/en/) in 2016, leading to a job offer from them. It can act as a good short tutorial for candidates anticpating similar positions in industry. 
 
-##Project Structure ##
+## Project Structure ##
 1. /src/main/resources/ - contains client side code
 2. /src/main/resources/templates/ - contains HTML code
 3. /src/main/resources/static/ - contains CSS and necessary javascript code
 4. /src/main/java/com/cefalo/ - contains server-side code written in spring boot framework of java programming language
 
-##Technology and Frameworks being used in this project ##
+## Technology and Frameworks being used in this project ##
 1. Spring Boot has the charge of managing server side code
 2. In memory SQL database HSQLDB has been used for repository purpose. Data will not be persisted. So
 you will lose data every time you restart servlet conatiner.
