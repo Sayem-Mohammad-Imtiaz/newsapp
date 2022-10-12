@@ -1,7 +1,7 @@
 # README #
 
 ## What this project is about ##
-This is an web application that allows user to publish articles and to download them in different format including HTML, JSON and XML format. I developed this web application as part of an assessment for a *Java Developer* position at [Cefalo](https://www.cefalo.com/en/) in 2016, leading to a job offer from them. It can act as a good short tutorial for candidates anticpating similar positions in industry. 
+This is a web application that allows user to publish articles and to download them in different format including HTML, JSON and XML format. I developed this web application as part of an assessment for a *Java Developer* position at [Cefalo](https://www.cefalo.com/en/) in 2016, leading to a job offer from them. It can act as a good short tutorial for candidates anticpating similar positions in industry. 
 
 ## Project Structure ##
 1. /src/main/resources/ - contains client side code
